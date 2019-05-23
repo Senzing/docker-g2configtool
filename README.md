@@ -214,11 +214,6 @@ The following software programs need to be installed:
 
 ## Examples
 
-1. Examples of use:
-    1. [docker-compose-mysql-demo](https://github.com/Senzing/docker-compose-mysql-demo)
-    1. [docker-compose-postgresql-demo](https://github.com/Senzing/docker-compose-postgresql-demo)
-    1. [docker-compose-db2-demo](https://github.com/Senzing/docker-compose-db2-demo)
-
 ## Errors
 
 1. See [docs/errors.md](docs/errors.md).
