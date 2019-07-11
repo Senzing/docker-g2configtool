@@ -42,7 +42,7 @@ This repository assumes a working knowledge of:
 
 ### Create SENZING_DIR
 
-1. If `/opt/senzing` directory is not on local system, visit
+1. If you do not already have an `/opt/senzing` directory on your local system, visit
    [HOWTO - Create SENZING_DIR](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/create-senzing-dir.md).
 
 ### Configuration
@@ -69,9 +69,9 @@ This repository assumes a working knowledge of:
 
 ### Run docker container
 
-#### Demonstration 1
+#### Variation 1
 
-Run the docker container with SQLite database and volumes.
+Run the docker container with internal SQLite database and external volume.
 
 1. :pencil2: Set environment variables.  Example:
 
@@ -79,7 +79,7 @@ Run the docker container with SQLite database and volumes.
     export SENZING_DIR=/opt/senzing
     ```
 
-1. Run the docker container.  Example:
+1. Run docker container.  Example:
 
     ```console
     sudo docker run \
@@ -90,9 +90,9 @@ Run the docker container with SQLite database and volumes.
       senzing/g2configtool
     ```
 
-#### Demonstration 2
+#### Variation 2
 
-Run the docker container with PostgreSQL database and volumes.
+Run the docker container accessing an external PostgreSQL database and volumes.
 
 1. :pencil2: Set environment variables.  Example:
 
@@ -104,17 +104,18 @@ Run the docker container with PostgreSQL database and volumes.
     export DATABASE_PORT=5432
     export DATABASE_DATABASE=G2
     export SENZING_DEBUG=1
+
     export SENZING_DIR=/opt/senzing
     ```
 
-1. Run the docker container.  Example:
+1. Run docker container.  Example:
 
     ```console
     export SENZING_DATABASE_URL="${DATABASE_PROTOCOL}://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DATABASE}"
 
     sudo docker run \
       --env SENZING_DATABASE_URL="${SENZING_DATABASE_URL}" \
-      --env SENZING_DEBUG="${SENZING_DEBUG}" \
+      --env SENZING_DEBUG=${SENZING_DEBUG} \
       --interactive \
       --rm \
       --tty \
@@ -122,9 +123,9 @@ Run the docker container with PostgreSQL database and volumes.
       senzing/g2configtool
     ```
 
-#### Demonstration 3
+#### Variation 3
 
-Run the docker container accessing a PostgreSQL database in a docker network.
+Run the docker container accessing an external MySQL database in a docker network.
 
 1. :pencil2: Determine docker network.  Example:
 
@@ -138,16 +139,17 @@ Run the docker container accessing a PostgreSQL database in a docker network.
 1. :pencil2: Set environment variables.  Example:
 
     ```console
-    export DATABASE_PROTOCOL=postgresql
-    export DATABASE_USERNAME=postgres
-    export DATABASE_PASSWORD=postgres
-    export DATABASE_HOST=senzing-postgresql
-    export DATABASE_PORT=5432
+    export DATABASE_PROTOCOL=mysql
+    export DATABASE_USERNAME=root
+    export DATABASE_PASSWORD=root
+    export DATABASE_HOST=senzing-mysql
+    export DATABASE_PORT=3306
     export DATABASE_DATABASE=G2
+
     export SENZING_DIR=/opt/senzing
     ```
 
-1. Run the docker container.  Example:
+1. Run docker container.  Example:
 
     ```console
     export SENZING_DATABASE_URL="${DATABASE_PROTOCOL}://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DATABASE}"
@@ -211,6 +213,8 @@ The following software programs need to be installed:
     cd ${GIT_REPOSITORY_DIR}
     sudo make docker-build
     ```
+
+    Note: `sudo make docker-build-base` can be used to create cached docker layers.
 
 ## Examples
 
