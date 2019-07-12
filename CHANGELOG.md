@@ -16,4 +16,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added in 1.0.0
 
-- Initial G2Command.py wrapper
+- Initial G2ConfigTool.py wrapper
