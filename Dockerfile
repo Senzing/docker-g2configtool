@@ -9,6 +9,10 @@ LABEL Name="senzing/g2configtool" \
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
+# Run as "root" for system installation.
+
+USER root
+
 # Install packages via apt.
 
 RUN apt-get update \
