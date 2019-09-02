@@ -1,11 +1,11 @@
-ARG BASE_IMAGE=senzing/senzing-base:1.1.0
+ARG BASE_IMAGE=senzing/senzing-base:1.2.1
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2019-07-23
+ENV REFRESHED_AT=2019-09-01
 
 LABEL Name="senzing/g2configtool" \
       Maintainer="support@senzing.com" \
-      Version="1.1.0"
+      Version="1.2.0"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -60,4 +60,4 @@ USER 1001
 # Runtime execution.
 
 WORKDIR /opt/senzing/g2/python
-ENTRYPOINT ["/opt/senzing/g2/python/G2ConfigTool.py" ]
+ENTRYPOINT ["/opt/senzing/g2/python/G2ConfigTool.py"]
