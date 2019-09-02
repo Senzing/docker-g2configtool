@@ -187,7 +187,8 @@ Use if a different userid is required.
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       senzing/g2configtool \
         --iniFile /etc/opt/senzing/G2Project.ini \
-        --g2ConfigFile /etc/opt/senzing/g2config.json
+        --g2ConfigFile /etc/opt/senzing/g2config.json \
+        --g2VariantFile /etc/opt/senzing/cfgVariant.json
     ```
 
 ## Develop
