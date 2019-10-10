@@ -4,6 +4,10 @@
 
 This Dockerfile is a wrapper over Senzing's G2ConfigTool.py.
 
+### Related artifacts
+
+1. [DockerHub](https://hub.docker.com/r/senzing/g2configtool)
+
 ### Contents
 
 1. [Expectations](#expectations)
@@ -144,6 +148,7 @@ Use if a different userid is required.
     ```console
     sudo docker run \
       ${SENZING_RUNAS_USER_PARAMETER} \
+      ${SENZING_DATABASE_URL_PARAMETER} \
       ${SENZING_NETWORK_PARAMETER} \
       --interactive \
       --rm \
